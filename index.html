@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TaskPulse — Todo Card</title>
+    <title>TaskPulse — Todo Card Stage 1</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -17,9 +17,7 @@
       <header class="page-header">
         <div class="page-header__text">
           <h1 class="page-title">My tasks</h1>
-          <p class="page-subtitle">
-            Track, prioritise, and ship.
-          </p>
+          <p class="page-subtitle">Track, prioritise, and ship.</p>
         </div>
         <div class="page-header__rule" aria-hidden="true"></div>
       </header>
@@ -46,717 +44,1493 @@
         />
       </div>
 
-      <!-- TASK 1 -->
       <article
         data-testid="test-todo-card"
         class="todo-card"
         role="region"
         aria-label="Todo task: Launch artist ranking feature on homepage"
+        data-priority="High"
+        data-status="In Progress"
       >
         <div
+          data-testid="test-todo-priority-indicator"
           class="todo-card__top-bar todo-card__top-bar--high"
           aria-hidden="true"
         ></div>
 
-        <div class="todo-card__header">
-          <div class="todo-card__checkbox-wrap">
-            <label for="toggle-1" class="sr-only">Mark task as complete</label>
-            <input
-              type="checkbox"
-              id="toggle-1"
-              data-testid="test-todo-complete-toggle"
-              aria-label="Mark task as complete"
-            />
-          </div>
-          <div class="todo-card__title-area">
-            <h2 data-testid="test-todo-title" class="todo-card__title">
-              Launch artist ranking feature on homepage
-            </h2>
-            <div class="todo-card__badge-row">
-              <span
-                data-testid="test-todo-priority"
-                class="badge badge--high"
-                aria-label="Priority: High"
-                >High</span
+        <div class="todo-card__view">
+          <div class="todo-card__header">
+            <div class="todo-card__checkbox-wrap">
+              <label for="toggle-1" class="sr-only"
+                >Mark task as complete</label
               >
-              <span
-                data-testid="test-todo-status"
-                class="badge badge--in-progress"
-                aria-label="Status: In Progress"
-                >In Progress</span
-              >
+              <input
+                type="checkbox"
+                id="toggle-1"
+                data-testid="test-todo-complete-toggle"
+                aria-label="Mark task as complete"
+              />
+            </div>
+            <div class="todo-card__title-area">
+              <h2 data-testid="test-todo-title" class="todo-card__title">
+                Launch artist ranking feature on homepage
+              </h2>
+              <div class="todo-card__badge-row">
+                <span
+                  data-testid="test-todo-priority"
+                  class="badge badge--high"
+                  aria-label="Priority: High"
+                  >High</span
+                >
+                <span
+                  data-testid="test-todo-status"
+                  class="badge badge--in-progress"
+                  aria-label="Status: In Progress"
+                  >In Progress</span
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="todo-card__body">
-          <p data-testid="test-todo-description" class="todo-card__description">
-            Implement the leaderboard UI for Muizzyranking, wire up the ranking
-            API, and run QA across mobile and desktop before the campaign goes
-            live.
-          </p>
-        </div>
+          <div class="todo-card__status-row">
+            <label for="status-1" class="sr-only">Change task status</label>
+            <select
+              id="status-1"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Task status"
+            >
+              <option value="Pending">Pending</option>
+              <option value="In Progress" selected>In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+          <div class="todo-card__body">
+            <div
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="7" />
+                <path d="M8 5v3.5M8 11v.5" />
+              </svg>
+              Overdue
+            </div>
 
-        <div class="todo-card__assignee">
-          <div class="avatar" aria-hidden="true">MR</div>
-          <div class="assignee-info">
-            <p class="assignee-info__label">Assigned to</p>
-            <strong class="assignee-info__name">Muizzyranking</strong>
+            <div
+              data-testid="test-todo-collapsible-section"
+              id="collapsible-1"
+              class="todo-card__collapsible"
+            >
+              <p
+                data-testid="test-todo-description"
+                class="todo-card__description"
+              >
+                Implement the leaderboard UI for Muizzyranking, wire up the ranking API, and run QA across mobile and desktop before the campaign goes live. </p>
+            </div>
+            <button
+              data-testid="test-todo-expand-toggle"
+              class="expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsible-1"
+              hidden
+            >
+              <span class="expand-toggle__label">Show more</span>
+              <svg
+                class="expand-toggle__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__assignee">
+            <div class="avatar" aria-hidden="true">MR</div>
+            <div class="assignee-info">
+              <p class="assignee-info__label">Assigned to</p>
+              <strong class="assignee-info__name">Muizzyranking</strong>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__dates">
+            <div class="date-item">
+              <span class="date-item__label">Deadline</span>
+              <time
+                data-testid="test-todo-due-date"
+                datetime="2026-04-05T12:00:00Z"
+                class="date-item__value"
+                >Due Apr 5, 2026</time
+              >
+            </div>
+            <div class="date-item date-item--right">
+              <span class="date-item__label">Time left</span>
+              <time
+                data-testid="test-todo-time-remaining"
+                class="date-item__remaining time-remaining"
+                data-due="2026-04-05T12:00:00Z"
+                aria-live="polite"
+                aria-atomic="true"
+              ></time>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__tags">
+            <ul
+              data-testid="test-todo-tags"
+              class="tags-list"
+              role="list"
+              aria-label="Task tags"
+            >
+              <li data-testid="test-todo-tag-work" class="tag">Work</li>
+              <li data-testid="test-todo-tag-urgent" class="tag">Urgent</li>
+              <li class="tag">Frontend</li>
+              <li class="tag">Launch</li>
+            </ul>
+          </div>
+
+          <div class="todo-card__footer">
+            <button
+              data-testid="test-todo-edit-button"
+              class="btn btn--edit"
+              aria-label="Edit task"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
+              </svg>
+              Edit
+            </button>
+            <button
+              data-testid="test-todo-delete-button"
+              class="btn btn--delete"
+              aria-label="Delete task"
+              onclick="alert('Delete clicked')"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
+              </svg>
+              Delete
+            </button>
           </div>
         </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__dates">
-          <div class="date-item">
-            <span class="date-item__label">Deadline</span>
-            <time
-              data-testid="test-todo-due-date"
-              datetime="2026-04-05T12:00:00Z"
-              class="date-item__value"
-              >Due Apr 5, 2026</time
-            >
+        <div class="todo-card__edit" hidden>
+          <div class="edit-form__header">
+            <span class="edit-form__label">Editing task</span>
           </div>
-          <div class="date-item date-item--right">
-            <span class="date-item__label">Time left</span>
-            <time
-              data-testid="test-todo-time-remaining"
-              class="date-item__remaining time-remaining"
-              data-due="2026-04-05T12:00:00Z"
-              aria-live="polite"
-              aria-atomic="true"
-            ></time>
-          </div>
-        </div>
+          <form data-testid="test-todo-edit-form" class="edit-form" novalidate>
+            <div class="edit-form__field">
+              <label for="edit-title-1" class="edit-form__label-text"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="edit-title-1"
+                data-testid="test-todo-edit-title-input"
+                class="edit-form__input"
+                placeholder="Task title"
+                required
+              />
+            </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+            <div class="edit-form__field">
+              <label for="edit-desc-1" class="edit-form__label-text"
+                >Description</label
+              >
+              <textarea
+                id="edit-desc-1"
+                data-testid="test-todo-edit-description-input"
+                class="edit-form__textarea"
+                placeholder="What needs to be done?"
+                rows="3"
+              ></textarea>
+            </div>
 
-        <div class="todo-card__tags">
-          <ul
-            data-testid="test-todo-tags"
-            class="tags-list"
-            role="list"
-            aria-label="Task tags"
-          >
-            <li data-testid="test-todo-tag-work" class="tag">Work</li>
-            <li data-testid="test-todo-tag-urgent" class="tag">Urgent</li>
-            <li class="tag">Frontend</li>
-            <li class="tag">Launch</li>
-          </ul>
-        </div>
+            <div class="edit-form__row">
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-priority-1" class="edit-form__label-text"
+                  >Priority</label
+                >
+                <select
+                  id="edit-priority-1"
+                  data-testid="test-todo-edit-priority-select"
+                  class="edit-form__select"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
 
-        <div class="todo-card__footer">
-          <button
-            data-testid="test-todo-edit-button"
-            class="btn btn--edit"
-            aria-label="Edit task"
-            onclick="console.log('edit clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
-            </svg>
-            Edit
-          </button>
-          <button
-            data-testid="test-todo-delete-button"
-            class="btn btn--delete"
-            aria-label="Delete task"
-            onclick="alert('Delete clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
-            </svg>
-            Delete
-          </button>
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-due-1" class="edit-form__label-text"
+                  >Due date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="edit-due-1"
+                  data-testid="test-todo-edit-due-date-input"
+                  class="edit-form__input"
+                />
+              </div>
+            </div>
+
+            <div class="edit-form__actions">
+              <button
+                type="submit"
+                data-testid="test-todo-save-button"
+                class="btn btn--save"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M2 8l4 4 8-8" />
+                </svg>
+                Save
+              </button>
+              <button
+                type="button"
+                data-testid="test-todo-cancel-button"
+                class="btn btn--cancel"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
 
-      <!-- TASK 2 -->
       <article
         data-testid="test-todo-card"
         class="todo-card"
         role="region"
         aria-label="Todo task: Migrate component library to TypeScript"
+        data-priority="Medium"
+        data-status="Pending"
       >
         <div
+          data-testid="test-todo-priority-indicator"
           class="todo-card__top-bar todo-card__top-bar--medium"
           aria-hidden="true"
         ></div>
 
-        <div class="todo-card__header">
-          <div class="todo-card__checkbox-wrap">
-            <label for="toggle-2" class="sr-only">Mark task as complete</label>
-            <input
-              type="checkbox"
-              id="toggle-2"
-              data-testid="test-todo-complete-toggle"
-              aria-label="Mark task as complete"
-            />
-          </div>
-          <div class="todo-card__title-area">
-            <h2 data-testid="test-todo-title" class="todo-card__title">
-              Migrate component library to TypeScript
-            </h2>
-            <div class="todo-card__badge-row">
-              <span
-                data-testid="test-todo-priority"
-                class="badge badge--medium"
-                aria-label="Priority: Medium"
-                >Medium</span
+        <div class="todo-card__view">
+          <div class="todo-card__header">
+            <div class="todo-card__checkbox-wrap">
+              <label for="toggle-2" class="sr-only"
+                >Mark task as complete</label
               >
-              <span
-                data-testid="test-todo-status"
-                class="badge badge--pending"
-                aria-label="Status: Pending"
-                >Pending</span
-              >
+              <input
+                type="checkbox"
+                id="toggle-2"
+                data-testid="test-todo-complete-toggle"
+                aria-label="Mark task as complete"
+              />
+            </div>
+            <div class="todo-card__title-area">
+              <h2 data-testid="test-todo-title" class="todo-card__title">
+                Migrate component library to TypeScript
+              </h2>
+              <div class="todo-card__badge-row">
+                <span
+                  data-testid="test-todo-priority"
+                  class="badge badge--medium"
+                  aria-label="Priority: Medium"
+                  >Medium</span
+                >
+                <span
+                  data-testid="test-todo-status"
+                  class="badge badge--pending"
+                  aria-label="Status: Pending"
+                  >Pending</span
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="todo-card__body">
-          <p data-testid="test-todo-description" class="todo-card__description">
-            Convert all existing JSX components to TSX, add prop-type
-            interfaces, and update the Storybook docs to reflect the new type
-            signatures.
-          </p>
-        </div>
+          <div class="todo-card__status-row">
+            <label for="status-2" class="sr-only">Change task status</label>
+            <select
+              id="status-2"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Task status"
+            >
+              <option value="Pending" selected>Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+          <div class="todo-card__body">
+            <div
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="7" />
+                <path d="M8 5v3.5M8 11v.5" />
+              </svg>
+              Overdue
+            </div>
 
-        <div class="todo-card__assignee">
-          <div class="avatar" aria-hidden="true">AB</div>
-          <div class="assignee-info">
-            <p class="assignee-info__label">Assigned to</p>
-            <strong class="assignee-info__name">Abdul.tsx</strong>
+            <div
+              data-testid="test-todo-collapsible-section"
+              id="collapsible-2"
+              class="todo-card__collapsible"
+            >
+              <p
+                data-testid="test-todo-description"
+                class="todo-card__description"
+              >
+                Convert all existing JSX components to TSX, add prop-type interfaces, and update the Storybook docs to reflect the new type signatures.
+              </p>
+            </div>
+            <button
+              data-testid="test-todo-expand-toggle"
+              class="expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsible-2"
+              hidden
+            >
+              <span class="expand-toggle__label">Show more</span>
+              <svg
+                class="expand-toggle__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__assignee">
+            <div class="avatar" aria-hidden="true">AB</div>
+            <div class="assignee-info">
+              <p class="assignee-info__label">Assigned to</p>
+              <strong class="assignee-info__name">Abdul.tsx</strong>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__dates">
+            <div class="date-item">
+              <span class="date-item__label">Deadline</span>
+              <time
+                data-testid="test-todo-due-date"
+                datetime="2026-04-28T17:00:00Z"
+                class="date-item__value"
+                >Due Apr 28, 2026</time
+              >
+            </div>
+            <div class="date-item date-item--right">
+              <span class="date-item__label">Time left</span>
+              <time
+                data-testid="test-todo-time-remaining"
+                class="date-item__remaining time-remaining"
+                data-due="2026-04-28T17:00:00Z"
+                aria-live="polite"
+                aria-atomic="true"
+              ></time>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__tags">
+            <ul
+              data-testid="test-todo-tags"
+              class="tags-list"
+              role="list"
+              aria-label="Task tags"
+            >
+              <li data-testid="test-todo-tag-work" class="tag">Work</li>
+              <li class="tag">Engineering</li>
+              <li class="tag">TypeScript</li>
+            </ul>
+          </div>
+
+          <div class="todo-card__footer">
+            <button
+              data-testid="test-todo-edit-button"
+              class="btn btn--edit"
+              aria-label="Edit task"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
+              </svg>
+              Edit
+            </button>
+            <button
+              data-testid="test-todo-delete-button"
+              class="btn btn--delete"
+              aria-label="Delete task"
+              onclick="alert('Delete clicked')"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
+              </svg>
+              Delete
+            </button>
           </div>
         </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__dates">
-          <div class="date-item">
-            <span class="date-item__label">Deadline</span>
-            <time
-              data-testid="test-todo-due-date"
-              datetime="2026-04-28T17:00:00Z"
-              class="date-item__value"
-              >Due Apr 28, 2026</time
-            >
+        <div class="todo-card__edit" hidden>
+          <div class="edit-form__header">
+            <span class="edit-form__label">Editing task</span>
           </div>
-          <div class="date-item date-item--right">
-            <span class="date-item__label">Time left</span>
-            <time
-              data-testid="test-todo-time-remaining"
-              class="date-item__remaining time-remaining"
-              data-due="2026-04-28T17:00:00Z"
-              aria-live="polite"
-              aria-atomic="true"
-            ></time>
-          </div>
-        </div>
-
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__tags">
-          <ul
-            data-testid="test-todo-tags"
-            class="tags-list"
-            role="list"
-            aria-label="Task tags"
-          >
-            <li data-testid="test-todo-tag-work" class="tag">Work</li>
-            <li class="tag">Engineering</li>
-            <li class="tag">TypeScript</li>
-          </ul>
-        </div>
-
-        <div class="todo-card__footer">
-          <button
-            data-testid="test-todo-edit-button"
-            class="btn btn--edit"
-            aria-label="Edit task"
-            onclick="console.log('edit clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
-            </svg>
-            Edit
-          </button>
-          <button
-            data-testid="test-todo-delete-button"
-            class="btn btn--delete"
-            aria-label="Delete task"
-            onclick="alert('Delete clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
-            </svg>
-            Delete
-          </button>
+          <form data-testid="test-todo-edit-form" class="edit-form" novalidate>
+            <div class="edit-form__field">
+              <label for="edit-title-2" class="edit-form__label-text"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="edit-title-2"
+                data-testid="test-todo-edit-title-input"
+                class="edit-form__input"
+                placeholder="Task title"
+                required
+              />
+            </div>
+            <div class="edit-form__field">
+              <label for="edit-desc-2" class="edit-form__label-text"
+                >Description</label
+              >
+              <textarea
+                id="edit-desc-2"
+                data-testid="test-todo-edit-description-input"
+                class="edit-form__textarea"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="edit-form__row">
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-priority-2" class="edit-form__label-text"
+                  >Priority</label
+                >
+                <select
+                  id="edit-priority-2"
+                  data-testid="test-todo-edit-priority-select"
+                  class="edit-form__select"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-due-2" class="edit-form__label-text"
+                  >Due date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="edit-due-2"
+                  data-testid="test-todo-edit-due-date-input"
+                  class="edit-form__input"
+                />
+              </div>
+            </div>
+            <div class="edit-form__actions">
+              <button
+                type="submit"
+                data-testid="test-todo-save-button"
+                class="btn btn--save"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M2 8l4 4 8-8" />
+                </svg>
+                Save
+              </button>
+              <button
+                type="button"
+                data-testid="test-todo-cancel-button"
+                class="btn btn--cancel"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
 
-      <!-- TASK 3 -->
       <article
         data-testid="test-todo-card"
         class="todo-card done"
         role="region"
         aria-label="Todo task: Write Q2 product strategy memo"
+        data-priority="High"
+        data-status="Done"
       >
         <div
+          data-testid="test-todo-priority-indicator"
           class="todo-card__top-bar todo-card__top-bar--high"
           aria-hidden="true"
         ></div>
 
-        <div class="todo-card__header">
-          <div class="todo-card__checkbox-wrap">
-            <label for="toggle-3" class="sr-only">Mark task as complete</label>
-            <input
-              type="checkbox"
-              id="toggle-3"
-              data-testid="test-todo-complete-toggle"
-              aria-label="Mark task as complete"
-              checked
-            />
-          </div>
-          <div class="todo-card__title-area">
-            <h2 data-testid="test-todo-title" class="todo-card__title">
-              Write Q2 product strategy memo
-            </h2>
-            <div class="todo-card__badge-row">
-              <span
-                data-testid="test-todo-priority"
-                class="badge badge--high"
-                aria-label="Priority: High"
-                >High</span
+        <div class="todo-card__view">
+          <div class="todo-card__header">
+            <div class="todo-card__checkbox-wrap">
+              <label for="toggle-3" class="sr-only"
+                >Mark task as complete</label
               >
-              <span
-                data-testid="test-todo-status"
-                class="badge badge--done"
-                aria-label="Status: Done"
-                >Done</span
+              <input
+                type="checkbox"
+                id="toggle-3"
+                data-testid="test-todo-complete-toggle"
+                aria-label="Mark task as complete"
+                checked
+              />
+            </div>
+            <div class="todo-card__title-area">
+              <h2 data-testid="test-todo-title" class="todo-card__title">
+                Write Q2 product strategy memo
+              </h2>
+              <div class="todo-card__badge-row">
+                <span
+                  data-testid="test-todo-priority"
+                  class="badge badge--high"
+                  aria-label="Priority: High"
+                  >High</span
+                >
+                <span
+                  data-testid="test-todo-status"
+                  class="badge badge--done"
+                  aria-label="Status: Done"
+                  >Done</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="todo-card__status-row">
+            <label for="status-3" class="sr-only">Change task status</label>
+            <select
+              id="status-3"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Task status"
+            >
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done" selected>Done</option>
+            </select>
+          </div>
+
+          <div class="todo-card__body">
+            <div
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="7" />
+                <path d="M8 5v3.5M8 11v.5" />
+              </svg>
+              Overdue
+            </div>
+
+            <div
+              data-testid="test-todo-collapsible-section"
+              id="collapsible-3"
+              class="todo-card__collapsible"
+            >
+              <p
+                data-testid="test-todo-description"
+                class="todo-card__description"
+              >
+                Draft the Q2 roadmap doc covering growth targets, feature bets, and resource allocation — to be shared with the exec team before the all-hands.
+              </p>
+            </div>
+            <button
+              data-testid="test-todo-expand-toggle"
+              class="expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsible-3"
+              hidden
+            >
+              <span class="expand-toggle__label">Show more</span>
+              <svg
+                class="expand-toggle__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__assignee">
+            <div class="avatar" aria-hidden="true">ME</div>
+            <div class="assignee-info">
+              <p class="assignee-info__label">Assigned to</p>
+              <strong class="assignee-info__name">Mark Essien</strong>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__dates">
+            <div class="date-item">
+              <span class="date-item__label">Deadline</span>
+              <time
+                data-testid="test-todo-due-date"
+                datetime="2026-04-01T09:00:00Z"
+                class="date-item__value"
+                >Due Apr 1, 2026</time
+              >
+            </div>
+            <div class="date-item date-item--right">
+              <span class="date-item__label">Time left</span>
+              <time
+                data-testid="test-todo-time-remaining"
+                class="date-item__remaining tr-done"
+                aria-live="polite"
+                aria-atomic="true"
+                >Completed</time
               >
             </div>
           </div>
-        </div>
 
-        <div class="todo-card__body">
-          <p data-testid="test-todo-description" class="todo-card__description">
-            Draft the Q2 roadmap doc covering growth targets, feature bets, and
-            resource allocation — to be shared with the exec team before the
-            all-hands.
-          </p>
-        </div>
+          <hr class="todo-card__rule" aria-hidden="true" />
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+          <div class="todo-card__tags">
+            <ul
+              data-testid="test-todo-tags"
+              class="tags-list"
+              role="list"
+              aria-label="Task tags"
+            >
+              <li data-testid="test-todo-tag-work" class="tag">Work</li>
+              <li class="tag">Strategy</li>
+              <li class="tag">Leadership</li>
+            </ul>
+          </div>
 
-        <div class="todo-card__assignee">
-          <div class="avatar" aria-hidden="true">ME</div>
-          <div class="assignee-info">
-            <p class="assignee-info__label">Assigned to</p>
-            <strong class="assignee-info__name">Mark Essien</strong>
+          <div class="todo-card__footer">
+            <button
+              data-testid="test-todo-edit-button"
+              class="btn btn--edit"
+              aria-label="Edit task"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
+              </svg>
+              Edit
+            </button>
+            <button
+              data-testid="test-todo-delete-button"
+              class="btn btn--delete"
+              aria-label="Delete task"
+              onclick="alert('Delete clicked')"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
+              </svg>
+              Delete
+            </button>
           </div>
         </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__dates">
-          <div class="date-item">
-            <span class="date-item__label">Deadline</span>
-            <time
-              data-testid="test-todo-due-date"
-              datetime="2026-04-01T09:00:00Z"
-              class="date-item__value"
-              >Due Apr 1, 2026</time
-            >
+        <div class="todo-card__edit" hidden>
+          <div class="edit-form__header">
+            <span class="edit-form__label">Editing task</span>
           </div>
-          <div class="date-item date-item--right">
-            <span class="date-item__label">Time left</span>
-            <time
-              data-testid="test-todo-time-remaining"
-              class="date-item__remaining tr-done"
-              aria-live="polite"
-              aria-atomic="true"
-              >Completed</time
-            >
-          </div>
-        </div>
-
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__tags">
-          <ul
-            data-testid="test-todo-tags"
-            class="tags-list"
-            role="list"
-            aria-label="Task tags"
-          >
-            <li data-testid="test-todo-tag-work" class="tag">Work</li>
-            <li class="tag">Strategy</li>
-            <li class="tag">Leadership</li>
-          </ul>
-        </div>
-
-        <div class="todo-card__footer">
-          <button
-            data-testid="test-todo-edit-button"
-            class="btn btn--edit"
-            aria-label="Edit task"
-            onclick="console.log('edit clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
-            </svg>
-            Edit
-          </button>
-          <button
-            data-testid="test-todo-delete-button"
-            class="btn btn--delete"
-            aria-label="Delete task"
-            onclick="alert('Delete clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
-            </svg>
-            Delete
-          </button>
+          <form data-testid="test-todo-edit-form" class="edit-form" novalidate>
+            <div class="edit-form__field">
+              <label for="edit-title-3" class="edit-form__label-text"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="edit-title-3"
+                data-testid="test-todo-edit-title-input"
+                class="edit-form__input"
+                required
+              />
+            </div>
+            <div class="edit-form__field">
+              <label for="edit-desc-3" class="edit-form__label-text"
+                >Description</label
+              >
+              <textarea
+                id="edit-desc-3"
+                data-testid="test-todo-edit-description-input"
+                class="edit-form__textarea"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="edit-form__row">
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-priority-3" class="edit-form__label-text"
+                  >Priority</label
+                >
+                <select
+                  id="edit-priority-3"
+                  data-testid="test-todo-edit-priority-select"
+                  class="edit-form__select"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-due-3" class="edit-form__label-text"
+                  >Due date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="edit-due-3"
+                  data-testid="test-todo-edit-due-date-input"
+                  class="edit-form__input"
+                />
+              </div>
+            </div>
+            <div class="edit-form__actions">
+              <button
+                type="submit"
+                data-testid="test-todo-save-button"
+                class="btn btn--save"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M2 8l4 4 8-8" />
+                </svg>
+                Save
+              </button>
+              <button
+                type="button"
+                data-testid="test-todo-cancel-button"
+                class="btn btn--cancel"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
 
-      <!-- TASK 4 -->
       <article
         data-testid="test-todo-card"
         class="todo-card"
         role="region"
         aria-label="Todo task: Set up end-of-year brand audit"
+        data-priority="Low"
+        data-status="Pending"
       >
         <div
+          data-testid="test-todo-priority-indicator"
           class="todo-card__top-bar todo-card__top-bar--low"
           aria-hidden="true"
         ></div>
 
-        <div class="todo-card__header">
-          <div class="todo-card__checkbox-wrap">
-            <label for="toggle-4" class="sr-only">Mark task as complete</label>
-            <input
-              type="checkbox"
-              id="toggle-4"
-              data-testid="test-todo-complete-toggle"
-              aria-label="Mark task as complete"
-            />
-          </div>
-          <div class="todo-card__title-area">
-            <h2 data-testid="test-todo-title" class="todo-card__title">
-              Set up end-of-year brand audit
-            </h2>
-            <div class="todo-card__badge-row">
-              <span
-                data-testid="test-todo-priority"
-                class="badge badge--low"
-                aria-label="Priority: Low"
-                >Low</span
+        <div class="todo-card__view">
+          <div class="todo-card__header">
+            <div class="todo-card__checkbox-wrap">
+              <label for="toggle-4" class="sr-only"
+                >Mark task as complete</label
               >
-              <span
-                data-testid="test-todo-status"
-                class="badge badge--pending"
-                aria-label="Status: Pending"
-                >Pending</span
-              >
+              <input
+                type="checkbox"
+                id="toggle-4"
+                data-testid="test-todo-complete-toggle"
+                aria-label="Mark task as complete"
+              />
+            </div>
+            <div class="todo-card__title-area">
+              <h2 data-testid="test-todo-title" class="todo-card__title">
+                Set up end-of-year brand audit
+              </h2>
+              <div class="todo-card__badge-row">
+                <span
+                  data-testid="test-todo-priority"
+                  class="badge badge--low"
+                  aria-label="Priority: Low"
+                  >Low</span
+                >
+                <span
+                  data-testid="test-todo-status"
+                  class="badge badge--pending"
+                  aria-label="Status: Pending"
+                  >Pending</span
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="todo-card__body">
-          <p data-testid="test-todo-description" class="todo-card__description">
-            Compile a full review of brand touchpoints — social, packaging, and
-            campaign assets — and benchmark against competitor positioning for
-            the annual report.
-          </p>
-        </div>
+          <div class="todo-card__status-row">
+            <label for="status-4" class="sr-only">Change task status</label>
+            <select
+              id="status-4"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Task status"
+            >
+              <option value="Pending" selected>Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+          <div class="todo-card__body">
+            <div
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="7" />
+                <path d="M8 5v3.5M8 11v.5" />
+              </svg>
+              Overdue
+            </div>
 
-        <div class="todo-card__assignee">
-          <div class="avatar" aria-hidden="true">NZ</div>
-          <div class="assignee-info">
-            <p class="assignee-info__label">Assigned to</p>
-            <strong class="assignee-info__name">Naza</strong>
+            <div
+              data-testid="test-todo-collapsible-section"
+              id="collapsible-4"
+              class="todo-card__collapsible"
+            >
+              <p
+                data-testid="test-todo-description"
+                class="todo-card__description"
+              >
+                Compile a full review of brand touchpoints — social, packaging, and campaign assets — and benchmark against competitor positioning for the annual report. 
+              </p>
+            </div>
+            <button
+              data-testid="test-todo-expand-toggle"
+              class="expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsible-4"
+              hidden
+            >
+              <span class="expand-toggle__label">Show more</span>
+              <svg
+                class="expand-toggle__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__assignee">
+            <div class="avatar" aria-hidden="true">NZ</div>
+            <div class="assignee-info">
+              <p class="assignee-info__label">Assigned to</p>
+              <strong class="assignee-info__name">Naza</strong>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__dates">
+            <div class="date-item">
+              <span class="date-item__label">Deadline</span>
+              <time
+                data-testid="test-todo-due-date"
+                datetime="2026-11-30T17:00:00Z"
+                class="date-item__value"
+                >Due Nov 30, 2026</time
+              >
+            </div>
+            <div class="date-item date-item--right">
+              <span class="date-item__label">Time left</span>
+              <time
+                data-testid="test-todo-time-remaining"
+                class="date-item__remaining time-remaining"
+                data-due="2026-11-30T17:00:00Z"
+                aria-live="polite"
+                aria-atomic="true"
+              ></time>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__tags">
+            <ul
+              data-testid="test-todo-tags"
+              class="tags-list"
+              role="list"
+              aria-label="Task tags"
+            >
+              <li data-testid="test-todo-tag-work" class="tag">Work</li>
+              <li class="tag">Branding</li>
+              <li class="tag">Research</li>
+              <li class="tag">Q4</li>
+            </ul>
+          </div>
+
+          <div class="todo-card__footer">
+            <button
+              data-testid="test-todo-edit-button"
+              class="btn btn--edit"
+              aria-label="Edit task"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
+              </svg>
+              Edit
+            </button>
+            <button
+              data-testid="test-todo-delete-button"
+              class="btn btn--delete"
+              aria-label="Delete task"
+              onclick="alert('Delete clicked')"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
+              </svg>
+              Delete
+            </button>
           </div>
         </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__dates">
-          <div class="date-item">
-            <span class="date-item__label">Deadline</span>
-            <time
-              data-testid="test-todo-due-date"
-              datetime="2026-11-30T17:00:00Z"
-              class="date-item__value"
-              >Due Nov 30, 2026</time
-            >
+        <div class="todo-card__edit" hidden>
+          <div class="edit-form__header">
+            <span class="edit-form__label">Editing task</span>
           </div>
-          <div class="date-item date-item--right">
-            <span class="date-item__label">Time left</span>
-            <time
-              data-testid="test-todo-time-remaining"
-              class="date-item__remaining time-remaining"
-              data-due="2026-11-30T17:00:00Z"
-              aria-live="polite"
-              aria-atomic="true"
-            ></time>
-          </div>
-        </div>
-
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__tags">
-          <ul
-            data-testid="test-todo-tags"
-            class="tags-list"
-            role="list"
-            aria-label="Task tags"
-          >
-            <li data-testid="test-todo-tag-work" class="tag">Work</li>
-            <li class="tag">Branding</li>
-            <li class="tag">Research</li>
-            <li class="tag">Q4</li>
-          </ul>
-        </div>
-
-        <div class="todo-card__footer">
-          <button
-            data-testid="test-todo-edit-button"
-            class="btn btn--edit"
-            aria-label="Edit task"
-            onclick="console.log('edit clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
-            </svg>
-            Edit
-          </button>
-          <button
-            data-testid="test-todo-delete-button"
-            class="btn btn--delete"
-            aria-label="Delete task"
-            onclick="alert('Delete clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
-            </svg>
-            Delete
-          </button>
+          <form data-testid="test-todo-edit-form" class="edit-form" novalidate>
+            <div class="edit-form__field">
+              <label for="edit-title-4" class="edit-form__label-text"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="edit-title-4"
+                data-testid="test-todo-edit-title-input"
+                class="edit-form__input"
+                required
+              />
+            </div>
+            <div class="edit-form__field">
+              <label for="edit-desc-4" class="edit-form__label-text"
+                >Description</label
+              >
+              <textarea
+                id="edit-desc-4"
+                data-testid="test-todo-edit-description-input"
+                class="edit-form__textarea"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="edit-form__row">
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-priority-4" class="edit-form__label-text"
+                  >Priority</label
+                >
+                <select
+                  id="edit-priority-4"
+                  data-testid="test-todo-edit-priority-select"
+                  class="edit-form__select"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-due-4" class="edit-form__label-text"
+                  >Due date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="edit-due-4"
+                  data-testid="test-todo-edit-due-date-input"
+                  class="edit-form__input"
+                />
+              </div>
+            </div>
+            <div class="edit-form__actions">
+              <button
+                type="submit"
+                data-testid="test-todo-save-button"
+                class="btn btn--save"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M2 8l4 4 8-8" />
+                </svg>
+                Save
+              </button>
+              <button
+                type="button"
+                data-testid="test-todo-cancel-button"
+                class="btn btn--cancel"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
 
-      <!-- TASK 5 -->
       <article
         data-testid="test-todo-card"
         class="todo-card"
         role="region"
         aria-label="Todo task: Produce weekly Afrobeats chart video"
+        data-priority="Medium"
+        data-status="In Progress"
       >
         <div
+          data-testid="test-todo-priority-indicator"
           class="todo-card__top-bar todo-card__top-bar--medium"
           aria-hidden="true"
         ></div>
 
-        <div class="todo-card__header">
-          <div class="todo-card__checkbox-wrap">
-            <label for="toggle-5" class="sr-only">Mark task as complete</label>
-            <input
-              type="checkbox"
-              id="toggle-5"
-              data-testid="test-todo-complete-toggle"
-              aria-label="Mark task as complete"
-            />
-          </div>
-          <div class="todo-card__title-area">
-            <h2 data-testid="test-todo-title" class="todo-card__title">
-              Produce weekly Afrobeats chart video
-            </h2>
-            <div class="todo-card__badge-row">
-              <span
-                data-testid="test-todo-priority"
-                class="badge badge--medium"
-                aria-label="Priority: Medium"
-                >Medium</span
+        <div class="todo-card__view">
+          <div class="todo-card__header">
+            <div class="todo-card__checkbox-wrap">
+              <label for="toggle-5" class="sr-only"
+                >Mark task as complete</label
               >
-              <span
-                data-testid="test-todo-status"
-                class="badge badge--in-progress"
-                aria-label="Status: In Progress"
-                >In Progress</span
-              >
+              <input
+                type="checkbox"
+                id="toggle-5"
+                data-testid="test-todo-complete-toggle"
+                aria-label="Mark task as complete"
+              />
+            </div>
+            <div class="todo-card__title-area">
+              <h2 data-testid="test-todo-title" class="todo-card__title">
+                Produce weekly Afrobeats chart video
+              </h2>
+              <div class="todo-card__badge-row">
+                <span
+                  data-testid="test-todo-priority"
+                  class="badge badge--medium"
+                  aria-label="Priority: Medium"
+                  >Medium</span
+                >
+                <span
+                  data-testid="test-todo-status"
+                  class="badge badge--in-progress"
+                  aria-label="Status: In Progress"
+                  >In Progress</span
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="todo-card__body">
-          <p data-testid="test-todo-description" class="todo-card__description">
-            Edit and render this week's top-10 chart countdown, add motion
-            graphics for each rank change, and export in 4K for YouTube and
-            Instagram Reels.
-          </p>
-        </div>
+          <div class="todo-card__status-row">
+            <label for="status-5" class="sr-only">Change task status</label>
+            <select
+              id="status-5"
+              data-testid="test-todo-status-control"
+              class="status-select"
+              aria-label="Task status"
+            >
+              <option value="Pending">Pending</option>
+              <option value="In Progress" selected>In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
+          <div class="todo-card__body">
+            <div
+              data-testid="test-todo-overdue-indicator"
+              class="overdue-indicator"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="7" />
+                <path d="M8 5v3.5M8 11v.5" />
+              </svg>
+              Overdue
+            </div>
 
-        <div class="todo-card__assignee">
-          <div class="avatar" aria-hidden="true">MZ</div>
-          <div class="assignee-info">
-            <p class="assignee-info__label">Assigned to</p>
-            <strong class="assignee-info__name">Muizzy</strong>
+            <div
+              data-testid="test-todo-collapsible-section"
+              id="collapsible-5"
+              class="todo-card__collapsible"
+            >
+              <p
+                data-testid="test-todo-description"
+                class="todo-card__description"
+              >
+                Edit and render this week's top-10 chart countdown, add motion graphics for each rank change, and export in 4K for YouTube and Instagram Reels. 
+                </p>
+            </div>
+            <button
+              data-testid="test-todo-expand-toggle"
+              class="expand-toggle"
+              aria-expanded="false"
+              aria-controls="collapsible-5"
+              hidden
+            >
+              <span class="expand-toggle__label">Show more</span>
+              <svg
+                class="expand-toggle__chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__assignee">
+            <div class="avatar" aria-hidden="true">MZ</div>
+            <div class="assignee-info">
+              <p class="assignee-info__label">Assigned to</p>
+              <strong class="assignee-info__name">Muizzy</strong>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__dates">
+            <div class="date-item">
+              <span class="date-item__label">Deadline</span>
+              <time
+                data-testid="test-todo-due-date"
+                datetime="2026-04-12T20:00:00Z"
+                class="date-item__value"
+                >Due Apr 12, 2026</time
+              >
+            </div>
+            <div class="date-item date-item--right">
+              <span class="date-item__label">Time left</span>
+              <time
+                data-testid="test-todo-time-remaining"
+                class="date-item__remaining time-remaining"
+                data-due="2026-04-12T20:00:00Z"
+                aria-live="polite"
+                aria-atomic="true"
+              ></time>
+            </div>
+          </div>
+
+          <hr class="todo-card__rule" aria-hidden="true" />
+
+          <div class="todo-card__tags">
+            <ul
+              data-testid="test-todo-tags"
+              class="tags-list"
+              role="list"
+              aria-label="Task tags"
+            >
+              <li data-testid="test-todo-tag-urgent" class="tag">Urgent</li>
+              <li class="tag">Content</li>
+              <li class="tag">Video</li>
+              <li class="tag">Social</li>
+            </ul>
+          </div>
+
+          <div class="todo-card__footer">
+            <button
+              data-testid="test-todo-edit-button"
+              class="btn btn--edit"
+              aria-label="Edit task"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
+              </svg>
+              Edit
+            </button>
+            <button
+              data-testid="test-todo-delete-button"
+              class="btn btn--delete"
+              aria-label="Delete task"
+              onclick="alert('Delete clicked')"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
+              </svg>
+              Delete
+            </button>
           </div>
         </div>
 
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__dates">
-          <div class="date-item">
-            <span class="date-item__label">Deadline</span>
-            <time
-              data-testid="test-todo-due-date"
-              datetime="2026-04-12T20:00:00Z"
-              class="date-item__value"
-              >Due Apr 12, 2026</time
-            >
+        <div class="todo-card__edit" hidden>
+          <div class="edit-form__header">
+            <span class="edit-form__label">Editing task</span>
           </div>
-          <div class="date-item date-item--right">
-            <span class="date-item__label">Time left</span>
-            <time
-              data-testid="test-todo-time-remaining"
-              class="date-item__remaining time-remaining"
-              data-due="2026-04-12T20:00:00Z"
-              aria-live="polite"
-              aria-atomic="true"
-            ></time>
-          </div>
-        </div>
-
-        <hr class="todo-card__rule" aria-hidden="true" />
-
-        <div class="todo-card__tags">
-          <ul
-            data-testid="test-todo-tags"
-            class="tags-list"
-            role="list"
-            aria-label="Task tags"
-          >
-            <li data-testid="test-todo-tag-urgent" class="tag">Urgent</li>
-            <li class="tag">Content</li>
-            <li class="tag">Video</li>
-            <li class="tag">Social</li>
-          </ul>
-        </div>
-
-        <div class="todo-card__footer">
-          <button
-            data-testid="test-todo-edit-button"
-            class="btn btn--edit"
-            aria-label="Edit task"
-            onclick="console.log('edit clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M11.5 2.5l2 2L5 13H3v-2L11.5 2.5z" />
-            </svg>
-            Edit
-          </button>
-          <button
-            data-testid="test-todo-delete-button"
-            class="btn btn--delete"
-            aria-label="Delete task"
-            onclick="alert('Delete clicked')"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              aria-hidden="true"
-            >
-              <path d="M3 4h10M6 4V2h4v2M5 4l.5 9h5L11 4" />
-            </svg>
-            Delete
-          </button>
+          <form data-testid="test-todo-edit-form" class="edit-form" novalidate>
+            <div class="edit-form__field">
+              <label for="edit-title-5" class="edit-form__label-text"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="edit-title-5"
+                data-testid="test-todo-edit-title-input"
+                class="edit-form__input"
+                required
+              />
+            </div>
+            <div class="edit-form__field">
+              <label for="edit-desc-5" class="edit-form__label-text"
+                >Description</label
+              >
+              <textarea
+                id="edit-desc-5"
+                data-testid="test-todo-edit-description-input"
+                class="edit-form__textarea"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="edit-form__row">
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-priority-5" class="edit-form__label-text"
+                  >Priority</label
+                >
+                <select
+                  id="edit-priority-5"
+                  data-testid="test-todo-edit-priority-select"
+                  class="edit-form__select"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <div class="edit-form__field edit-form__field--half">
+                <label for="edit-due-5" class="edit-form__label-text"
+                  >Due date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="edit-due-5"
+                  data-testid="test-todo-edit-due-date-input"
+                  class="edit-form__input"
+                />
+              </div>
+            </div>
+            <div class="edit-form__actions">
+              <button
+                type="submit"
+                data-testid="test-todo-save-button"
+                class="btn btn--save"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M2 8l4 4 8-8" />
+                </svg>
+                Save
+              </button>
+              <button
+                type="button"
+                data-testid="test-todo-cancel-button"
+                class="btn btn--cancel"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </article>
     </main>
